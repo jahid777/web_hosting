@@ -1,0 +1,158 @@
+===========================================
+Common CLI:
+
+#root directory: $ cd ~
+cd>cd ..>ls
+
+ls -a (see hidden file in server)
+
+start server: $ node server.js
+
+create a file:$ nano test.txt
+
+Enter some text, then press Ctrl+O to save the changes.
+
+- "Append" for save file
+  Press Ctrl+X to exit the editor.
+
+#Remove Files: $ rm file.txt
+#Remove directory: $ rmdir directory_name || rm -r directory_name
+#forcely delete: $ rm -f filename
+#Directory delete: $ rm -d directory
+
+#view file: $ vi file name.
+#exit view: $ :qa!
+
+#Ubuntu version check: $ lsb_release -a
+
+=============================\*Reactjs and node js configure.=====================================================================
+
+#Makes Droplet.
+
+#Once you are logged in within the System then update and upgrade your system by using linux command:
+
+$ apt-get update && apt-get upgrade
+
+=============================Then Build your Site on local repo and install express: =============================
+$ npm run build
+
+$ npm install --save express
+
+#make server.js file in your local repo and paste(doc: https://create-react-app.dev/docs/deployment/):
+
+const express = require('express');
+const path = require('path');
+const app = express();
+
+app.use(express.static(path.join(\_\_dirname, 'build')));
+
+app.get('/\*', function (req, res) {
+res.sendFile(path.join(\_\_dirname, 'build', 'index.html'));
+});
+
+app.listen(9000);
+
+#Push in remote repo.
+
+===================================================================================================================
+
+#Clone into DigitalOcean console(in your droplet).
+$ git clone " repo-url "
+
+#cd to your project and install npm/node:
+Install node using nvm (Node Virtual Manager)
+
+$ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+#update your node environment: $ source ~/.profile
+
+#Finding available node: $ nvm ls-remote
+
+#Install latest one(on 08/2022 version 16 were recomended): $ nvm install v16
+
+#Install express in droplet -> project folder: $ npm install --save express
+
+#Build your project in droplet -> project folder: $ npm run build
+
+#Install nginx server to serve your application in root of droplet: $ apt-get install nginx
+
+#configure nginx:
+cd to your root folder: $ cd /
+
+go to:
+$ cd/etc/nginx/sites-availabe
+you can see "default" folder only.
+
+=========configure default folder=======
+\*You can make multy default file for multy preject or multy project for same default file(just need changes location section)
+
+create new default:
+$ sudo neno ./filename.ext
+remove file:
+$ sudo rm ./filename
+
+==================Reload your nginx======================
+
+Then reload your nginx: $ systemctl reload nginx
+
+$ sudo systemctl restart nginx
+
+Maybe you're not doing it as root?
+
+Try $ sudo nginx -s reload, if it still doesn't work, you might want to try $ sudo pkill -HUP nginx.
+
+Start again: $ node server.js
+
+=======pm2 for forever start========
+$ npm install -g pm2
+
+$ pm2 list
+
+$ pm2 start server.js --name "project name"
+
+$ pm2 start/stop 0(id no.)
+$ pm2 delete (id no.) , to delete.
+$ pm2 restart (id no.)
+
+====================================================================================================================================================
+
+====================Doc link=================
+#install Node js
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04
+
+#Install nginx
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-22-04
+
+#ssl certificate
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04
+
+#Firewall Tutorial
+https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server#introduction
+
+#git repo for pm2
+https://github.com/Unitech/pm2/issues/3471
+
+#nodejs configure for ssl and firewall
+https://www.coderrocketfuel.com/article/deploy-a-nodejs-application-to-digital-ocean-with-https
+
+#multy server in one droplet
+https://dev.to/zeeshanhshaheen/how-to-deploy-react-js-and-nodejs-app-on-a-single-digitalocean-droplet-using-nginx-1pcl
+
+===============================================
+
+================= ===========
+
+========================================
+
+===================Step to host react js and node js ============================
+#. Create a droplet.
+#. Install nginx in droplet root.
+#. enabled ufw (config ufw)
+#. clone your project from github.
+#. configure nginx "default"- folder.(each projects for each file configure)
+#. Install node, npm, express in your peoject and build.
+#. Install pm2 for forever server running.
+
+===============================================================================
