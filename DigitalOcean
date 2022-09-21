@@ -1,5 +1,5 @@
 ===========================================
-Common CLI:
+Common CLI: 
 
 #root directory: $ cd ~
 cd>cd ..>ls
@@ -11,21 +11,20 @@ start server: $ node server.js
 create a file:$ nano test.txt
 
 Enter some text, then press Ctrl+O to save the changes.
-
-- "Append" for save file
-  Press Ctrl+X to exit the editor.
+* "Append" for save file
+Press Ctrl+X to exit the editor.
 
 #Remove Files: $ rm file.txt
-#Remove directory: $ rmdir directory_name || rm -r directory_name
+#Remove directory: $ rmdir directory_name  || rm -r directory_name
 #forcely delete: $ rm -f filename
 #Directory delete: $ rm -d directory
 
 #view file: $ vi file name.
-#exit view: $ :qa!
+#exit view: $ :qa! 
 
 #Ubuntu version check: $ lsb_release -a
 
-=============================\*Reactjs and node js configure.=====================================================================
+=============================*Reactjs and node js configure.=====================================================================
 
 #Makes Droplet.
 
@@ -44,10 +43,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(\_\_dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/\*', function (req, res) {
-res.sendFile(path.join(\_\_dirname, 'build', 'index.html'));
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(9000);
@@ -84,7 +83,7 @@ $ cd/etc/nginx/sites-availabe
 you can see "default" folder only.
 
 =========configure default folder=======
-\*You can make multy default file for multy preject or multy project for same default file(just need changes location section)
+*You can make multy default file for multy preject or multy project for same default file(just need changes location section)
 
 create new default:
 $ sudo neno ./filename.ext
@@ -103,6 +102,7 @@ Try $ sudo nginx -s reload, if it still doesn't work, you might want to try $ su
 
 Start again: $ node server.js
 
+
 =======pm2 for forever start========
 $ npm install -g pm2
 
@@ -113,6 +113,7 @@ $ pm2 start server.js --name "project name"
 $ pm2 start/stop 0(id no.)
 $ pm2 delete (id no.) , to delete.
 $ pm2 restart (id no.)
+
 
 ====================================================================================================================================================
 
@@ -146,13 +147,15 @@ https://dev.to/zeeshanhshaheen/how-to-deploy-react-js-and-nodejs-app-on-a-single
 
 ========================================
 
+
+
 ===================Step to host react js and node js ============================
 #. Create a droplet.
 #. Install nginx in droplet root.
-#. enabled ufw (config ufw)
-#. clone your project from github.
-#. configure nginx "default"- folder.(each projects for each file configure)
+#. enabled ufw (config ufw), Enabled firewall (after allow openSSH, otherwise console disabled by firewall)
+#. clone your project from github. (in '/var/www' -folder)
 #. Install node, npm, express in your peoject and build.
+#. configure nginx "default"- folder.(each projects for each file configure) ('/etc/nginx/sites-available' -folder)
 #. Install pm2 for forever server running.
 
 ===============================================================================
