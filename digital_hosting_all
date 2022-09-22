@@ -1,0 +1,142 @@
+1.## digital ocean a prothome droplate khulbo 20.04 version dia , password o set kore dibo.monitoring ar ipvs6 active kore dibo
+droplates ar nam o set kore dibo.then create button a press korbo.then console a kaj korbo...
+
+2.## abr root folder a jabo tar jonno command: cd /  likbo..list dhakte ls use kora hoy
+
+3.## abr nginx a install korbo tobe install ar age update kore nibo then install dibo documentation a ase sob command.. 
+version ta aki rakbo jmn ta droplate khular smy diseci...
+   nginx install documents: (
+   https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04
+  )
+  install hoise kina check korte command: nginx -t dibo....
+  
+ ar por command: sudo ufw app list dia list dhakbo onk ghula option shakn theke nginx full ta and 'OpenSSH' install dibo..nginx full ta inxtall dite hole 
+Command: sudo ufw allow 'Nginx Full' dibo..
+ ar por list a arekta option ase OpenSSH name setao install korbo command: sudo ufw allow 'OpenSSH' dibo..
+ 
+
+
+4.## ar por enabled ufw korer jonno comand: sudo ufw enable ata dibo.. aytar jonno documentation ase..active hoise kina status dhakte 
+ command: sudo ufw status ata dibo..(
+   https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server#introduction
+  )
+
+5.## abr folder direction change korbo tar jonno ls dia folder khujbo var name sekhanene jabo nise just cd var likhe..then abr aytar modde www folder ase
+ sekhane dhukbo ls liklei folder chole asbe and www okhne jete cd www likbo then akhnaei git clone korbo.. frontend sejonno git clone then repo link dibo ar repo
+ jate public thake dhake nibo..then aytay ngnix chalu hoise kina ip (ipv4) ta dia search dibo..
+tar por backend tao clone korbo git clone beckend repo..clone korar purbe frontend a server.js name file banaia kisu code rakbo..ar get ar okhne / ar por star dibo.
+ jetar documentation:( 
+https://create-react-app.dev/docs/deployment/)
+
+
+6.## abr Install node install korbo.
+install Node js korte version milaia nibo..tar por 3 number option theke bash soho command ta nibo.. 
+command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash   ....tar por command:  source ~/.bashrc ata chalabo..
+ar por command: nvm list-remote ata dia latest ta check korbo..tar por install korer jonno nvm install latest selected kora version ta likhe dibo..
+node -v dia check korbo
+
+node Install documents: (https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)
+
+7.##abr npm install dibo tar jonno project ar vitor dhukte hobe frontend and backend ar vitor..project ar vitor dhukar jonno cd dmcabooks_frontend korbo
+
+ then npm install dibo..
+8.##abr express install daoer jonno command npm install express --save  ata dibo(error khaile force kore install dibo
+ tar poreo na hole npm chece clean ar verify kroe nibo  ).
+
+9.## thik aki vabe backend a age dhukbo cd dmcabooks_backend name..frontend theke ber haoer jonno cd .. liklei hobe ek step ber hobe.. 
+then uorer vabe npm ar exress install dibo
+
+
+10.## namechep thkee domin domain name ta nia digital ocean ar create a jaia domain and dns a add korbo..tar por dns record pabo oighula namcheap ar dns a dibo 3ta..
+digital ocean ar upore input a host name a prothm bar @ dia then poorer bar www dia set korbo.
+abr paser tab cname a subdomin add korbo @ likhe creat kore dibo www dorkar nay (server nam a ba iccaa)..
+
+_______________________________________________________abr config korte hobbbeeee_______________________________________________________________
+
+##10. cd cd ~ die root folder a jabo
+##11. ar por defualt folder a jabo cd die die ba sora sori  Command: cd /etc/nginx/sites-available  ata dileo chole jabe
+##12. abr default folder ta edit korte hobe tar jonno comand: nano defualt likbo
+
+##13.default ar  root folder ar vitor dhakbo root /var/www/ar por habi jabi ota soraia dmcabooks_frontend likbo ar 2line nisei dhakbo server_name ar pore gape 
+dia ekbar www dia amr domian name abr space dia www chara domain name likhe dibo.
+location ar modde try_files $uri $uri/ =404; ata # dia off kore rakbo tar nise dibo
+ 
+                 proxy_pass http://localhost:9000(amr server.js ar port);
+                 proxy_http_version 1.1;
+                 proxy_set_header Upgrade $http_upgrade;
+                 proxy_set_header Connection 'upgrade';
+                 proxy_set_header Host $host;
+                 proxy_cache_bypass $http_upgrade;
+
+
+
+##14... abr backend ar jonno frontend ar } karli braket jekhane ses hosie sekhaene 
+
+server {
+       listen 80;
+      listen [::]:80;
+
+       server_name server.cardiaclibrary.org;
+
+      root /var/www/dmcabooks_backend;
+       index index.html;
+
+       location / {
+              #try_files $uri $uri/ =404;
+                 proxy_pass http://localhost:5000;
+                 proxy_http_version 1.1;
+                 proxy_set_header Upgrade $http_upgrade;
+                 proxy_set_header Connection 'upgrade';
+                 proxy_set_header Host $host;
+                 proxy_cache_bypass $http_upgrade;
+       }
+}
+
+
+##15. save korte ctrl + o , then control click kore append , then ctrl + x
+
+##16. abr frontend and backend a jaya pm2 install dibo then build kore pm2 start kore dibo (npm install pm2@latest -g mani -g dile sob jaygay e hoia jay install)
+#git repo for pm2
+https://github.com/Unitech/pm2/issues/3471
+frontend start: pm2 frontend start korar jonno pm2 start server.js --name "frontend"  (server file tar nam);
+backend start: pm2 start index.js --name backend (build korar dorkar nay)
+
+##17.ngnix relead restart 2tay dibo then cd /dia sorasori onk vitore direction change kora jay..abr ekta jete hole sudhu cd / lage na
+
+##18.protibar git pull korle npm run build kore dibo then ngnix restart kore dibo ..pm2 restart kore dibo ..comnad: pm2 list dheke list dhakbo ..
+then pm2 restart 1 0 (list ar nam dhore dibo)
+
+
+_____________________________________________________abr backend a env file ta create kore then credintial daoa----------------------------------------
+
+## command: nano .env name file banabo ,,, command: ls -a dia hidden file dheka jay..command: vi .env dia view kore..  
+
+
+----------------------------------------------------------ssl adding ar jonno--------------------------------------------------------------------
+##Root folder a jaia nibo cd ~ dia.. ssl documentation: (https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04) 
+version change kore nibo.
+
+command: sudo apt install certbot python3-certbot-nginx
+
+ar por Command: sudo certbot --nginx -d example.com -d www.example.com (nijer domin name dibo) ..
+tar por gmail dibo jeta dia khulsi then A die yes korbo..tar por jeta asbe setao Y dibo. jodi kono number chay tayle 2 dia dibo..
+
+tar por command: sudo systemctl status certbot.timer ayta dibo..
+tar por command: sudo certbot renew --dry-run
+
+~~~abr abr backend a ssl add korbo~~
+command: sudo certbot --nginx -d example.com (nijer domian)
+tar por command: sudo systemctl status certbot.timer ayta dibo..
+tar por command: sudo certbot renew --dry-run
+
+----------------------------------------------------------------THE END----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
