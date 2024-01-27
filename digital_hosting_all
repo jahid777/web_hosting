@@ -129,6 +129,14 @@ command: sudo certbot --nginx -d example.com (nijer domian)
 tar por command: sudo systemctl status certbot.timer ayta dibo..
 tar por command: sudo certbot renew --dry-run
 
+
+
+**kono karone jodi npm run build na hoy/ npm install na hoy
+rm -rf node_modules
+rm package-lock.json
+npm install --force
+npm run build
+
 ----------------------------------------------------------------THE END----------------------------------------------------------------------------------
 
 
