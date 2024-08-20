@@ -93,7 +93,7 @@ server {
 }
 
 
-##15. save korte ctrl + o , then control click kore append , then ctrl + x
+##15. save korte ctrl + o ,press enter,  then control click kore append , then ctrl + x
 
 ##16. abr frontend and backend a jaya pm2 install dibo then build kore pm2 start kore dibo (npm install pm2@latest -g mani -g dile sob jaygay e hoia jay install)
 #git repo for pm2
