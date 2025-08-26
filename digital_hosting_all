@@ -56,6 +56,8 @@ _______________________________________________________abr config korte hobbbeee
 ##10. cd cd ~ die root folder a jabo
 ##11. ar por defualt folder a jabo cd die die ba sora sori  Command: cd /etc/nginx/sites-available  ata dileo chole jabe
 ##12. abr default folder ta edit korte hobe tar jonno comand: nano defualt likbo
+sora sori dukbo command: sudo nano /etc/nginx/sites-available/default
+
 
 ##13.default ar  root folder ar vitor dhakbo root /var/www/ar por habi jabi ota soraia dmcabooks_frontend likbo ar 2line nisei dhakbo server_name ar pore gape 
 dia ekbar www dia amr domian name abr space dia www chara domain name likhe dibo.
