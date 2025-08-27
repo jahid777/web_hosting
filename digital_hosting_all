@@ -115,6 +115,11 @@ _____________________________________________________abr backend a env file ta c
 
 
 ----------------------------------------------------------ssl adding ar jonno--------------------------------------------------------------------
+##ssl add korar purbe domain account a manage domain theke advance dns a 3ta jinish add korbo ta nise daoa holo,
+1. a record select korbo @ likbo host er okhene, digital ocan theke public ip(ipv4) ta dibo value tab borabor
+2. a record select korbo www likbo host er okhene, digital ocan theke public ip(ipv4) ta dibo value tab borabor
+3. a record select korbo server likbo host er okhene, digital ocan theke public ip(ipv4) ta dibo value tab borabor
+
 ##Root folder a jaia nibo cd ~ dia.. ssl documentation: (https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04) 
 version change kore nibo.
 
