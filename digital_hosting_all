@@ -112,7 +112,7 @@ then pm2 restart 1 0 (list ar nam dhore dibo)
 _____________________________________________________abr backend a env file ta create kore then credintial daoa----------------------------------------
 
 ## command: nano .env name file banabo ,,, command: ls -a dia hidden file dheka jay..command: vi .env dia view kore.. kisu change korle okhne thkeo add, commit push korte hoi jodi amader github a dhakte chai ..then tar por npm run  build o then pm2, ngnix realod/restart korte hoy.  
-
+## .env file edit korte nano .env, same korte control + O => enter button => control + x
 
 ----------------------------------------------------------ssl adding ar jonno--------------------------------------------------------------------
 ##ssl add korar purbe domain account a manage domain theke advance dns a 3ta jinish add korbo ta nise daoa holo,
